@@ -63,7 +63,7 @@ const Header = () => {
           }}
         >
           <IconButton variant="outlined">
-            <NotificationsIcon />
+            <NotificationsIcon style  ={{color :"black"}} />
           </IconButton>
         </div>
       </Grid>
