@@ -13,15 +13,19 @@ const ListComment = ({ classes, comments, markSeen }) => {
         setTimeout(() => {
             // hit the global state function to reduce the no of unseen comments. 
             markSeen()
-            console.log(id)
             document.getElementById(`${id}`).style.display = "none";
         }, 1000)
 
     }
     const showComments = () => {
+        let commentLength = comments.length;
+        let counter = 1;
         return comments.map(comment => {
+            let showHr = true
+            console.log(counter)
+            if(counter >= commentLength) showHr = false 
+            counter = counter +1
             var time = moment(comment.dates.created.date_time, 'DD/MM/YYYY').fromNow();
-            var id = comment.id
             return (
                 <React.Fragment key={comment.id}>
                     <ListItem key={comment.id}>
@@ -73,7 +77,8 @@ const ListComment = ({ classes, comments, markSeen }) => {
                                 </React.Fragment>
                             } />
                     </ListItem>
-                    <hr className={classes.dashed} />
+                    {showHr ?  <hr className={classes.dashed} /> : null }
+                   
                 </React.Fragment>
             )
         })

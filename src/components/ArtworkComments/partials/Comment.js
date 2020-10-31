@@ -9,11 +9,6 @@ const Comment = () => {
     useEffect(() => {
         getCommentData();
     }, [])
-    useEffect(() => {
-
-        console.log(state.comments)
-        console.log(state.loading)
-    }, [state.comments])
     const useStyles = makeStyles((theme) => ({
         root: {
             width: '100%',

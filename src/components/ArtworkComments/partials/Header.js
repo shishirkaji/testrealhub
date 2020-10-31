@@ -30,14 +30,10 @@ const Header = () => {
   const style = useStyles();
   let [hidebadge, setHideBadge] = useState({ hidebadge: false, bg: "#02b7e2", iconColor: "white", border: "1px solid #02b7e2" })
   useEffect(() => {
-    console.log(state.unseen)
-    console.log("rendering ")
-    console.log(hidebadge.bg)
     if (state.unseen < 1) {
-      console.log("changing  badge ")
-      setHideBadge({ hidebadge: true, bg: null, iconColor: "black", border: "1px solid rgba(0, 0, 0, 0.23)" })
+      setHideBadge({ hidebadge: true, bg: null, iconColor: "#404041", border: "1px solid rgba(0, 0, 0, 0.23)" })
       // setHideBadge({ hidebadge: true, bg: null })
-    } 
+    }
     else {
       setHideBadge({ hidebadge: false, bg: "#02b7e2", iconColor: "white", border: "1px solid #02b7e2" })
     }
@@ -51,7 +47,7 @@ const Header = () => {
       <Grid className={style.grid} item xs={4}>
         <Button
           className={style.button}
-          startIcon={<EmailIcon />}
+          startIcon={<EmailIcon style={{ color: "#404041" }} />}
           variant="outlined"
           fullWidth
         >
@@ -60,9 +56,9 @@ const Header = () => {
       </Grid>
       <Grid className={style.grid} item xs={6}>
         <ButtonGroup aria-label="outlined primary button group" fullWidth>
-          <Button startIcon={<AddIcon />}></Button>
+          <Button style={{ color: "#404041" }} startIcon={<RemoveIcon />}></Button>
           <Button className={style.label} style={{ width: "312%" }}>150%</Button>
-          <Button startIcon={<RemoveIcon />}></Button>
+          <Button  style={{ color: "#404041" }} startIcon={<AddIcon />}></Button>
         </ButtonGroup>
       </Grid>
       <Grid className={style.grid} item xs={2}>
