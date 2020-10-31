@@ -1,7 +1,18 @@
 .fade-in {
-    opacity: 0;
+  opacity: 0;
 }
 .fade-in.visible {
-    transition: opacity 0.4s ease-in;
-    opacity: 1;
+  transition: opacity 0.4s ease-in;
+  opacity: 1;
+}
+.vertical {
+   border-left: 6px solid black;
+    height: 300px;
+    position: absolute;
+  left: 50%;
+}
+.mark_seen {
+  display: inline;
+  cursor : pointer;
+  color : red !important
 }

@@ -3,8 +3,15 @@ export default (state, action) => {
         case "SET_COMMENT":
             return {
                 ...state,
-                comments: action.payload,
-                loading: false
+                comments: action.payload.comments,
+                loading: false,
+                unseen: action.payload.unseen
+            };
+        case "MARKSEEN":
+            const  noOfUnseen = state.unseen -1 ;
+            return {
+                ...state,
+                unseen: noOfUnseen
             };
         default:
             return state;

@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Button from '@material-ui/core/Button'
+import { Link, Redirect } from 'react-router-dom'
 const Start = () => {
+  const [redirect, setRedirect] = useState(false)
   return (
+
+
     <div className="App">
+      { redirect ? <Redirect to='/comments' /> : null
+      }
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+      </header>
+      <div className="content">
+        <h1>Requirements</h1>
         <ul>
           <li>
             <input
@@ -97,11 +108,58 @@ const Start = () => {
                 return;
               }}
             />
-            Deployed online
+            Deployed online on EC2 AWS served by Nginx server
           </li>{" "}
           <li></li>
         </ul>
-      </header>
+        <ul>
+          <li>
+            <input
+              type="checkbox"
+              checked
+              onChange={() => {
+                return;
+              }}
+            />
+            A unseen comment count bubble/icon
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              checked
+              onChange={() => {
+                return;
+              }}
+            />
+            Simple and elegant animation
+          </li>{" "}
+          <li></li>
+        </ul>
+        <ul>
+          <li>
+            <input
+              type="checkbox"
+              checked
+              onChange={() => {
+                return;
+              }}
+            />
+            Used Context API to manage master state. 
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              checked
+              onChange={() => {
+                return;
+              }}
+            />
+            Mobile first UI
+          </li>
+         
+        </ul>
+        <Button variant="contained" color="secondary" onClick={() => { setRedirect(true) }} >Comments</Button>
+      </div>
     </div>
   );
 };

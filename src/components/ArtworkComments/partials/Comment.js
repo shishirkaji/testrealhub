@@ -5,10 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { GlobalContext } from "./../../../context/GlobalState";
 import './style.css'
 const Comment = () => {
-    const { state, getCommentData } = useContext(GlobalContext);
+    const { state, getCommentData, markSeen } = useContext(GlobalContext);
     useEffect(() => {
         getCommentData();
-        console.log("calling api fro commment")
     }, [])
     useEffect(() => {
 
@@ -44,7 +43,8 @@ const Comment = () => {
         list: {
             transition: "opacity 0.4s ease-in-out",
             opacity: 1,
-        }
+        },
+
     }
     ));
     const [fadein, setFadein] = useState(false)
@@ -54,7 +54,7 @@ const Comment = () => {
             setFadein(true);
         }, 0)
         return <List className={`fade-in ${fadein && 'visible'}`}>
-            <ListComment classes={classes} comments={state.comments} />
+            <ListComment classes={classes} comments={state.comments} markSeen={markSeen} />
         </List>
     }
     const showLoading = () => {
