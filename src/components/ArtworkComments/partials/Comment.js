@@ -1,21 +1,19 @@
-import React, { useContext, useEffect } from 'react'
-import Typography from "@material-ui/core/Typography";
+import React, { useContext, useEffect, useState } from 'react'
 import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import Avatar from '@material-ui/core/Avatar'
+import ListComment from './ListComment'
 import { makeStyles } from "@material-ui/core/styles";
 import { GlobalContext } from "./../../../context/GlobalState";
+import './style.css'
 const Comment = () => {
     const { state, getCommentData } = useContext(GlobalContext);
     useEffect(() => {
         getCommentData();
-        console.log(state.comments)
+        console.log("calling api fro commment")
     }, [])
     useEffect(() => {
 
         console.log(state.comments)
+        console.log(state.loading)
     }, [state.comments])
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -42,171 +40,31 @@ const Comment = () => {
             height: "80%",
             overflow: "auto"
 
+        },
+        list: {
+            transition: "opacity 0.4s ease-in-out",
+            opacity: 1,
         }
     }
     ));
+    const [fadein, setFadein] = useState(false)
     const classes = useStyles();
+    const showList = () => {
+        setTimeout(() => {
+            setFadein(true);
+        }, 0)
+        return <List className={`fade-in ${fadein && 'visible'}`}>
+            <ListComment classes={classes} comments={state.comments} />
+        </List>
+    }
+    const showLoading = () => {
+        return <strong>loading.....</strong>
+    }
     return (
         <div className={classes.comment_content}>
-            <List >
-                <ListItem>
-                    <ListItemAvatar style={{ top: "-8px", position: "relative" }}>
-                        <Avatar>
-                            <img className={classes.thumbnail} src="https://realhub.s3-ap-southeast-2.amazonaws.com/storage/development/images/files/000/001/014/staffphotos_%286_of_14%29_square_headshot_200x200.jpg?1490158017" />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            style={{ color: "#02b7e2" }}
-                        >
-                            Frank Greeff
-                        </Typography>}
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Also, the address is 79/104 New Order Road not 78 bl
-                                    w Order Road not 78 bl
-                                </Typography>
-                                <br></br>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textSecondary"
-                                >
-                                    5 mins ago
-                                    </Typography>
-                            </React.Fragment>
-                        } />
-                </ListItem>
-                <hr className={classes.dashed} />
-                <ListItem>
-                    <ListItemAvatar style={{ top: "-8px", position: "relative" }}>
-                        <Avatar>
-                            <img className={classes.thumbnail} src="https://realhub.s3-ap-southeast-2.amazonaws.com/storage/development/images/files/000/001/014/staffphotos_%286_of_14%29_square_headshot_200x200.jpg?1490158017" />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            style={{ color: "#02b7e2" }}
-                        >
-                            Frank Greeff
-                        </Typography>}
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Also, the address is 79/104 New Order Road not 78 bl
-                                    w Order Road not 78 bl
-                                </Typography>
-                                <br></br>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textSecondary"
-                                >
-                                    5 mins ago
-                                    </Typography>
-                            </React.Fragment>
-                        } />
-                </ListItem>
-                <hr className={classes.dashed} />
-                <ListItem>
-                    <ListItemAvatar style={{ top: "-8px", position: "relative" }}>
-                        <Avatar>
-                            <img className={classes.thumbnail} src="https://realhub.s3-ap-southeast-2.amazonaws.com/storage/development/images/files/000/001/014/staffphotos_%286_of_14%29_square_headshot_200x200.jpg?1490158017" />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            style={{ color: "#02b7e2" }}
-                        >
-                            Frank Greeff
-                        </Typography>}
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Also, the address is 79/104 New Order Road not 78 bl
-                                    w Order Road not 78 bl
-                                </Typography>
-                                <br></br>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textSecondary"
-                                >
-                                    5 mins ago
-                                    </Typography>
-                            </React.Fragment>
-                        } />
-                </ListItem>
-                <hr className={classes.dashed} />
-                <ListItem>
-                    <ListItemAvatar style={{ top: "-8px", position: "relative" }}>
-                        <Avatar>
-                            <img className={classes.thumbnail} src="https://realhub.s3-ap-southeast-2.amazonaws.com/storage/development/images/files/000/001/014/staffphotos_%286_of_14%29_square_headshot_200x200.jpg?1490158017" />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            style={{ color: "#02b7e2" }}
-                        >
-                            Frank Greeff
-                        </Typography>}
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Also, the address is 79/104 New Order Road not 78 bl
-                                    w Order Road not 78 bl
-                                </Typography>
-                                <br></br>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textSecondary"
-                                >
-                                    5 mins ago
-                                    </Typography>
-                            </React.Fragment>
-                        } />
-                </ListItem>
-                <hr className={classes.dashed} />
+            {state.loading ? showLoading() : showList()}
 
-            </List></div>
+        </div>
     )
 }
 

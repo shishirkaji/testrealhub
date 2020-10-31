@@ -4,7 +4,7 @@ export default (state, action) => {
             return {
                 ...state,
                 comments: action.payload,
-                // loading: false
+                loading: false
             };
         default:
             return state;
