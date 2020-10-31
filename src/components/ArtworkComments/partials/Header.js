@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -8,9 +8,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import RemoveIcon from "@material-ui/icons/Remove";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import Container from "@material-ui/core/Container";
+import NotificationsIcon from "@material-ui/icons/Notifications"; import Badge from '@material-ui/core/Badge';
 const useStyles = makeStyles({
   button: {
     textTransform: "none",
@@ -29,6 +27,7 @@ const useStyles = makeStyles({
 const Header = () => {
   const style = useStyles();
 
+  let [badge, setBadge] = useState(false)
   return (
     <Grid
       container
@@ -48,7 +47,7 @@ const Header = () => {
       <Grid className={style.grid} item xs={6}>
         <ButtonGroup aria-label="outlined primary button group" fullWidth>
           <Button startIcon={<AddIcon />}></Button>
-          <Button className={style.label}>150%</Button>
+          <Button className={style.label} style ={{width : "312%"}}>150%</Button>
           <Button startIcon={<RemoveIcon />}></Button>
         </ButtonGroup>
       </Grid>
@@ -60,14 +59,15 @@ const Header = () => {
             width: "100%",
             justifyContent: "center",
             display: "flex",
-          }}
-        >
+          }}  >
           <IconButton variant="outlined">
-            <NotificationsIcon style  ={{color :"black"}} />
+            <Badge badgeContent={4} color="secondary" invisible={badge}>
+              <NotificationsIcon style={{ color: "black" }} onClick={(e) => { console.log("clicked"); setBadge(badge ? false : true) }} />
+            </Badge >
           </IconButton>
         </div>
-      </Grid>
-    </Grid>
+      </Grid >
+    </Grid >
   );
 };
 
