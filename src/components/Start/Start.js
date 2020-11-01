@@ -13,7 +13,7 @@ const Start = () => {
         </header>
       </div>
       <div className="content">
-        <div style ={{display :"flex",justifyContent:"center"}}><h1>Requirements</h1></div>
+        <div style={{ display: "flex", justifyContent: "center" }}><h1>Requirements</h1></div>
         <ul>
           <p>
             <input
@@ -105,7 +105,7 @@ const Start = () => {
                 return;
               }}
             />
-            Deployed onpne on EC2 AWS served by Nginx server
+            Deployed online on EC2 AWS served by Nginx server
           </p>{" "}
         </ul>
         <ul>
@@ -155,10 +155,13 @@ const Start = () => {
         </ul>
 
       </div>
-      <div style ={{display : "flex", justifyContent : "center", backgroundColor:"#282c34", paddingBottom : "32px"}}>
-      <Button variant="contained" color="secondary" onClick={() => {
-        history.push('/comments')
-      }} >Comments</Button></div>
+      <div style={{ display: "flex", justifyContent: "space-between", paddingLeft : "50px" , paddingRight : "50px", backgroundColor: "#282c34", paddingBottom: "32px" }}>
+        <div> <Button variant="contained" color="secondary" href = "https://github.com/shishirkaji/testrealhub.git" target="_blank">Code</Button>
+        
+        </div>
+        <div> <Button variant="contained" color="secondary" onClick={() => {
+          history.push('/comments')
+        }} >Comments</Button> </div></div>
     </React.Fragment>
   );
 };
