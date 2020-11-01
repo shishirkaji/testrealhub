@@ -38,9 +38,9 @@ const App = () => {
               <Start />
             </Route>
           </Switch>
-
         </ThemeProvider>
-      </GlobalProvider></Router>
+      </GlobalProvider>
+    </Router>
   )
 }
 

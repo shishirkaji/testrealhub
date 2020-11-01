@@ -2,23 +2,20 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Button from '@material-ui/core/Button'
-import { Link, Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 const Start = () => {
-  const [redirect, setRedirect] = useState(false)
+  let history = useHistory();
   return (
-
-
-    <div className="App">
-      { redirect ? <Redirect to='/comments' /> : null
-      }
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-      </header>
+    <React.Fragment>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+      </div>
       <div className="content">
-        <h1>Requirements</h1>
+        <div style ={{display :"flex",justifyContent:"center"}}><h1>Requirements</h1></div>
         <ul>
-          <li>
+          <p>
             <input
               type="checkbox"
               checked
@@ -27,8 +24,8 @@ const Start = () => {
               }}
             />
             Component is built using React.js
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -37,8 +34,8 @@ const Start = () => {
               }}
             />
             Component uses ES6 syntax and features
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -47,8 +44,8 @@ const Start = () => {
               }}
             />
             Component is built as a Functional Component
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -57,8 +54,8 @@ const Start = () => {
               }}
             />
             Uses React Hooks
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -68,8 +65,8 @@ const Start = () => {
             />
             Comments are ordered in reverse chronological order (newest comments
             first).
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -77,9 +74,9 @@ const Start = () => {
                 return;
               }}
             />
-            Ability to mark comments as "seen" / acknowledged
-          </li>{" "}
-          <li>
+            Abipty to mark comments as "seen" / acknowledged
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -88,8 +85,8 @@ const Start = () => {
               }}
             />
             If there are unseen comments the button is blue
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -99,8 +96,8 @@ const Start = () => {
             />
             Once all comments are marked as "seen" / acknowledged the button
             returns to its default state
-          </li>{" "}
-          <li>
+          </p>{" "}
+          <p>
             <input
               type="checkbox"
               checked
@@ -108,12 +105,11 @@ const Start = () => {
                 return;
               }}
             />
-            Deployed online on EC2 AWS served by Nginx server
-          </li>{" "}
-          <li></li>
+            Deployed onpne on EC2 AWS served by Nginx server
+          </p>{" "}
         </ul>
         <ul>
-          <li>
+          <p>
             <input
               type="checkbox"
               checked
@@ -122,8 +118,8 @@ const Start = () => {
               }}
             />
             A unseen comment count bubble/icon
-          </li>
-          <li>
+          </p>
+          <p>
             <input
               type="checkbox"
               checked
@@ -132,11 +128,11 @@ const Start = () => {
               }}
             />
             Simple and elegant animation
-          </li>{" "}
-          <li></li>
+          </p>{" "}
+
         </ul>
         <ul>
-          <li>
+          <p>
             <input
               type="checkbox"
               checked
@@ -144,9 +140,9 @@ const Start = () => {
                 return;
               }}
             />
-            Used Context API to manage master state. 
-          </li>
-          <li>
+            Used Context API to manage master state.
+          </p>
+          <p>
             <input
               type="checkbox"
               checked
@@ -155,12 +151,15 @@ const Start = () => {
               }}
             />
             Mobile first UI
-          </li>
-         
+          </p>
         </ul>
-        <Button variant="contained" color="secondary" onClick={() => { setRedirect(true) }} >Comments</Button>
+
       </div>
-    </div>
+      <div style ={{display : "flex", justifyContent : "center", backgroundColor:"#282c34", paddingBottom : "32px"}}>
+      <Button variant="contained" color="secondary" onClick={() => {
+        history.push('/comments')
+      }} >Comments</Button></div>
+    </React.Fragment>
   );
 };
 

@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
-import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
 import moment from 'moment'
 const ListComment = ({ classes, comments, markSeen }) => {
     // make an api call to mark it as seen let suppose we alter the master state as mark as seen for the item with id 
@@ -14,7 +14,7 @@ const ListComment = ({ classes, comments, markSeen }) => {
             // hit the global state function to reduce the no of unseen comments. 
             markSeen()
             document.getElementById(`${id}`).style.display = "none";
-        }, 1000)
+        }, 0)
 
     }
     const showComments = () => {
@@ -23,8 +23,8 @@ const ListComment = ({ classes, comments, markSeen }) => {
         return comments.map(comment => {
             let showHr = true
             console.log(counter)
-            if(counter >= commentLength) showHr = false 
-            counter = counter +1
+            if (counter >= commentLength) showHr = false
+            counter = counter + 1
             var time = moment(comment.dates.created.date_time, 'DD/MM/YYYY').fromNow();
             return (
                 <React.Fragment key={comment.id}>
@@ -69,16 +69,16 @@ const ListComment = ({ classes, comments, markSeen }) => {
                                         variant="body2"
                                         className="mark_seen"
                                         color="textSecondary"
-                                        
+
                                         onClick={(e) => hitSeen(comment.id)}
                                     >
-                                        Mark As Seen
+                                        <Button color="secondary" style ={{ textTransform  : "none"}}> Mark As Seen</Button>
                                     </Typography></span>}
                                 </React.Fragment>
                             } />
                     </ListItem>
-                    {showHr ?  <hr className={classes.dashed} /> : null }
-                   
+                    {showHr ? <hr className={classes.dashed} /> : null}
+
                 </React.Fragment>
             )
         })
