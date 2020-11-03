@@ -7,7 +7,7 @@ import './style.css'
 const Comment = () => {
     const { state, getCommentData, markSeen } = useContext(GlobalContext);
     useEffect(() => {
-        getCommentData();
+        document.title = "Comments"
     }, [])
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -48,16 +48,24 @@ const Comment = () => {
         setTimeout(() => {
             setFadein(true);
         }, 0)
-        return <List className={`fade-in ${fadein && 'visible'}`}>
-            <ListComment classes={classes} comments={state.comments} markSeen={markSeen} />
-        </List>
+        return (
+            // <div style={{ border: "1px solid rgba(0, 0, 0, 0.23)" }}>
+                <List  className={`fade-in ${fadein && 'visible'}`}>
+                    <ListComment classes={classes} comments={state.comments} markSeen={markSeen} />
+                </List>
+            // </div>
+        )
     }
     const showLoading = () => {
         return <strong>loading.....</strong>
     }
     return (
-        <div className={classes.comment_content}>
-            {state.loading ? showLoading() : showList()}
+        <div 
+        // style={{ border: "1px solid rgba(0, 0, 0, 0.23)" ,overflow:"auto", height :"300px"}}
+        //  className={classes.comment_content}
+        className = "comment-list"
+         >
+            {!state.comments ? null : state.comments.length < 1 ? showLoading() : showList()}
 
         </div>
     )

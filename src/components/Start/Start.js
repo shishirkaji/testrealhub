@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useContext } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Button from '@material-ui/core/Button'
+import { GlobalContext } from "./../../context/GlobalState";
+import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom'
 const Start = () => {
+  const { clearMasterstate } = useContext(GlobalContext);
   let history = useHistory();
+  useEffect(() => {
+    document.title = "Requirements"
+    clearMasterstate()
+    return null
+  }, [])
   return (
     <React.Fragment>
       <div className="App">
@@ -74,7 +81,7 @@ const Start = () => {
                 return;
               }}
             />
-            Abipty to mark comments as "seen" / acknowledged
+            Ability to mark comments as "seen" / acknowledged
           </p>{" "}
           <p>
             <input
@@ -155,9 +162,9 @@ const Start = () => {
         </ul>
 
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", paddingLeft : "50px" , paddingRight : "50px", backgroundColor: "#282c34", paddingBottom: "32px" }}>
-        <div> <Button variant="contained" color="secondary" href = "https://github.com/shishirkaji/testrealhub.git" target="_blank">Code</Button>
-        
+      <div style={{ display: "flex", justifyContent: "space-between", paddingLeft: "50px", paddingRight: "50px", backgroundColor: "#282c34", paddingBottom: "32px" }}>
+        <div> <Button variant="contained" color="secondary" href="https://github.com/shishirkaji/testrealhub.git" target="_blank">Source Code</Button>
+
         </div>
         <div> <Button variant="contained" color="secondary" onClick={() => {
           history.push('/comments')

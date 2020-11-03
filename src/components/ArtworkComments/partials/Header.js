@@ -26,8 +26,11 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
-  const { state } = useContext(GlobalContext);
+  const { state, toggleComments, getCommentData } = useContext(GlobalContext);
   const style = useStyles();
+  useEffect(() => {
+    getCommentData();
+  }, [])
   let [hidebadge, setHideBadge] = useState({ hidebadge: false, bg: "#02b7e2", iconColor: "white", border: "1px solid #02b7e2" })
   useEffect(() => {
     if (state.unseen < 1) {
@@ -58,7 +61,7 @@ const Header = () => {
         <ButtonGroup aria-label="outlined primary button group" fullWidth>
           <Button style={{ color: "#404041" }} startIcon={<RemoveIcon />}></Button>
           <Button className={style.label} style={{ width: "312%" }}>150%</Button>
-          <Button  style={{ color: "#404041" }} startIcon={<AddIcon />}></Button>
+          <Button style={{ color: "#404041" }} startIcon={<AddIcon />}></Button>
         </ButtonGroup>
       </Grid>
       <Grid className={style.grid} item xs={2}>
@@ -71,7 +74,7 @@ const Header = () => {
             justifyContent: "center",
             display: "flex",
           }}  >
-          <IconButton variant="outlined">
+          <IconButton variant="outlined" onClick={() => { toggleComments() }} >
             <Badge badgeContent={state.unseen} color="secondary" invisible={hidebadge.hidebadge}>
               <NotificationsIcon style={{ color: hidebadge.iconColor }} />
             </Badge >

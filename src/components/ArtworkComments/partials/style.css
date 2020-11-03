@@ -16,3 +16,8 @@
   cursor : pointer;
   color : red !important
 }
+.comment-list{
+  border: 1px solid rgba(0, 0, 0, 0.23) ;
+  overflow:auto;
+   height :300px
+}
